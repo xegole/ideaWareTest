@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dataResponse"
+            type="com.example.ideawaretest.data.responses.DataResponse" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/labelCompetitionName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/global_margin_medium"
+            android:text="@{dataResponse.competitionStage.competition.name}"
+            android:textColor="@color/colorBlue"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Champions league" />
+
+        <TextView
+            android:id="@+id/labelVenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/global_margin_medium"
+            android:text="@{dataResponse.venue.name}"
+            android:textSize="@dimen/text_size_min"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelCompetitionName"
+            tools:text="Stanford bridge" />
+
+        <TextView
+            android:id="@+id/labelVenueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/global_margin_medium"
+            android:textSize="@dimen/text_size_min"
+            app:date_match="@{dataResponse.date}"
+            app:layout_constraintStart_toEndOf="@id/labelVenue"
+            app:layout_constraintTop_toBottomOf="@id/labelCompetitionName"
+            tools:text="Stanford bridge" />
+
+
+        <TextView
+            android:id="@+id/labelHomeTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/global_margin_medium"
+            android:layout_marginTop="@dimen/global_margin_big"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{dataResponse.homeTeam.name}"
+            android:textColor="@color/colorBlue"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelVenue"
+            tools:text="Chelsea FC" />
+
+        <TextView
+            android:id="@+id/labelAwayTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/global_margin_medium"
+            android:layout_marginTop="@dimen/global_margin_medium"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{dataResponse.awayTeam.name}"
+            android:textColor="@color/colorBlue"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelHomeTeam"
+            tools:text="Chelsea FC" />
+
+        <TextView
+            android:id="@+id/labelMatchDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{``+dataResponse.score.home}"
+            android:textColor="@{dataResponse.score.homeWinner ? @color/colorBlue : @color/colorBlueLight}"
+            android:textSize="@dimen/text_size_x_big"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/labelMatchDayWeek"
+            app:layout_constraintEnd_toEndOf="@+id/labelMatchDayWeek"
+            app:layout_constraintStart_toStartOf="@+id/labelMatchDayWeek"
+            app:layout_constraintTop_toTopOf="@+id/labelHomeTeam"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/labelMatchDayWeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/global_margin_x_big"
+            android:text="@{``+dataResponse.score.away}"
+            android:textColor="@{dataResponse.score.homeWinner ? @color/colorBlueLight : @color/colorBlue}"
+            android:textSize="@dimen/text_size_big"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/labelAwayTeam"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelMatchDay"
+            tools:text="0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

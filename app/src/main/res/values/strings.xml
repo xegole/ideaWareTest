@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">IdeaWare Test</string>
+
+    <string name="label_page_fixture">Fixtures</string>
+    <string name="label_page_result">Results</string>
+    <string name="label_postponed">POSTPONED</string>
+</resources>
